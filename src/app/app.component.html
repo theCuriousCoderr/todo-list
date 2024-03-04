@@ -1,1 +1,25 @@
-<h1>Hello, Ola</h1>
+<div class="container">
+  <div class="btn-wrapper">
+    <div class="btn-container">
+      <div class="btn-add">
+        <button (click)="add(5)">+5</button>
+      </div>
+      <div class="btn-add">
+        <button (click)="add(1)">+1</button>
+      </div>
+    </div>
+    <div class="btn-container">
+      <div class="btn-subtract">
+        <button (click)="subtract(1)">-1</button>
+      </div>
+      <div class="btn-subtract">
+        <button (click)="subtract(5)">-5</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="count">{{ count }}</p>
+  </div>
+
+  <button (click)="reset()">RESET</button>
+</div>

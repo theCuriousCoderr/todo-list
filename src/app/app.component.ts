@@ -8,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'todo';
+  count = 0;
+  animation = false;
+  add(value: number) {
+    this.animation = true
+    this.count = this.count + value;
+    setTimeout(() => {
+      this.animation = false
+    }, 500)
+  }
+  subtract(value: number) {
+    this.count = this.count - value;
+  }
+  reset() {
+    this.count = 0;
+  }
 }
