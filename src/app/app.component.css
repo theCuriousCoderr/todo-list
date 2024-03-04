@@ -28,6 +28,12 @@ button {
     display: flex;
     gap: .5rem;
 }
+p {
+    text-align: center;
+    font-size: 2rem;
+    font-weight:bold;
+    color: black;
+}
 
 .count {
     text-align: center;
