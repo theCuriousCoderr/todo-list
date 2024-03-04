@@ -38,12 +38,13 @@ p {
     text-align: center;
     font-size: 2rem;
     font-weight:bold;
-    color: black;
+    color: rgb(8, 85, 89);
+    background-color: rgba(149, 190, 193,.5);
 }
 
 .count {
     text-align: center;
-    font-size: 3rem;
+    /* font-size: 3rem; */
     font-weight:bold;
     color: blue;
 }
