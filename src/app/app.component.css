@@ -4,7 +4,13 @@ button {
     border: 1px solid black;
     border-radius: .5rem;
 }
-
+.container {
+    background-color: aqua;
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+    box-shadow: 5px 5px rgb(92, 79, 79);
+}
 .btn-add button {
     background-color: rgb(168, 234, 168);
 }
