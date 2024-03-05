@@ -1,25 +1,54 @@
-<div class="container">
+<div class="main">
+  <h1>My To Do List</h1>
+  <label for="addItemInput">What would you like to do today?</label>
+
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput"
+  />
+
+  <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+
   <div class="btn-wrapper">
-    <div class="btn-container">
-      <div class="btn-add">
-        <button (click)="add(5)">+5</button>
-      </div>
-      <div class="btn-add">
-        <button (click)="add(1)">+1</button>
-      </div>
-    </div>
-    <div class="btn-container">
-      <div class="btn-subtract">
-        <button (click)="subtract(1)">-1</button>
-      </div>
-      <div class="btn-subtract">
-        <button (click)="subtract(5)">-5</button>
-      </div>
-    </div>
-  </div>
-  <div>
-    <p class="count">{{ count }}</p>
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'all'"
+      (click)="filter = 'all'">
+      All
+    </button>
+  
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'active'"
+      (click)="filter = 'active'">
+      To Do
+    </button>
+  
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'done'"
+      (click)="filter = 'done'">
+      Done
+    </button>
   </div>
 
-  <button (click)="reset()">RESET</button>
+  <h2>
+    {{ items.length }}
+    @if (items.length === 1) {
+    <span *ngIf="items.length === 1; else elseBlock">item</span>
+    } @else {
+    <span>items</span>
+    }
+  </h2>
+
+  <ul>
+    @for (i of items; track i) {
+    <li>
+      <app-item (remove)="remove(i)" [item]="i"></app-item>
+    </li>
+    }
+  </ul>
 </div>
