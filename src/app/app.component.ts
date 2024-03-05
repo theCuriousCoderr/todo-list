@@ -1,26 +1,45 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Item } from "./item";
+import { ItemComponent } from "./item/item.component";
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: "app-root",
+  imports: [ItemComponent],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  count = 0;
-  animation = false;
-  add(value: number) {
-    this.animation = true
-    this.count = this.count + value;
-    setTimeout(() => {
-      this.animation = false
-    }, 500)
+  title = "todo";
+
+  filter: "all" | "active" | "done" = "all";
+
+  allItems = [
+    { description: "eat", done: true },
+    { description: "sleep", done: false },
+    { description: "play", done: false },
+    { description: "laugh", done: false },
+  ];
+
+  get items() {
+    if (this.filter === "all") {
+      return this.allItems;
+    }
+    return this.allItems.filter((item) =>
+      this.filter === "done" ? item.done : !item.done
+    );
   }
-  subtract(value: number) {
-    this.count = this.count - value;
+
+  addItem(description: string) {
+    this.allItems.unshift({
+      description,
+      done: false
+    });
   }
-  reset() {
-    this.count = 0;
+
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
   }
+  
+  
 }
